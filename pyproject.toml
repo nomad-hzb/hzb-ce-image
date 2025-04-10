@@ -33,6 +33,7 @@ jupyter = [
 'ipydatagrid',
 'jupyter-flex',
 'ipympl',
+'pyvis',
 #'baybe',
 'lmfit',
 'jupyterlab_h5web',
