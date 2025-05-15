@@ -3268,7 +3268,7 @@ requires-dist = [
     { name = "nomad-material-processing", marker = "extra == 'plugins'" },
     { name = "nomad-measurements", marker = "extra == 'plugins'" },
     { name = "oauthenticator", marker = "extra == 'jupyter'", specifier = "<16" },
-    { name = "plotly", specifier = "<6.0" },
+    { name = "plotly", specifier = "<7.0" },
     { name = "pyvis", marker = "extra == 'jupyter'" },
     { name = "seaborn", marker = "extra == 'jupyter'" },
     { name = "voila", marker = "extra == 'jupyter'" },
