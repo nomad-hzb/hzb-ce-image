@@ -3490,20 +3490,6 @@ dependencies = [
     { name = "qrcode" },
 ]
 
-[[package]]
-name = "nomad-chemical-energy"
-version = "1.0.0"
-source = { git = "https://github.com/nomad-hzb/nomad-chemical-energy.git#96f7383744995e43b4b94f93fb624ed249b83abf" }
-dependencies = [
-    { name = "httpx" },
-    { name = "nomad-baseclasses" },
-    { name = "nomad-lab" },
-    { name = "nomad-material-processing" },
-    { name = "nomad-measurements" },
-    { name = "nptdms" },
-    { name = "yadg" },
-    { name = "zahner-analysis" },
-]
 
 [[package]]
 name = "nomad-distribution"
