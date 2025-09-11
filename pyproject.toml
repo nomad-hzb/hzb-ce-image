@@ -38,7 +38,7 @@ jupyter = [
 'ipyvuetify',
 'ipympl',
 'pyvis',
-#'baybe',
+'baybe',
 'lmfit',
 'jupyterlab_h5web',
 'jupyterlab>4.0',
