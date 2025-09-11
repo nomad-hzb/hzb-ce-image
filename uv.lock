@@ -3521,7 +3521,6 @@ jupyter = [
 ]
 plugins = [
     { name = "nomad-baseclasses" },
-    { name = "nomad-chemical-energy" },
     { name = "nomad-material-processing" },
     { name = "nomad-measurements" },
 ]
@@ -3538,7 +3537,6 @@ requires-dist = [
     { name = "jupyterlab-h5web", marker = "extra == 'jupyter'" },
     { name = "lmfit", marker = "extra == 'jupyter'" },
     { name = "nomad-baseclasses", marker = "extra == 'plugins'", git = "https://github.com/nomad-hzb/nomad-baseclasses.git" },
-    { name = "nomad-chemical-energy", marker = "extra == 'plugins'", git = "https://github.com/nomad-hzb/nomad-chemical-energy.git" },
     { name = "nomad-lab", extras = ["parsing", "infrastructure"], specifier = "==1.3.17" },
     { name = "nomad-lab", extras = ["parsing", "infrastructure", "dev"], marker = "extra == 'dev'", specifier = "==1.3.17" },
     { name = "nomad-material-processing", marker = "extra == 'plugins'" },
