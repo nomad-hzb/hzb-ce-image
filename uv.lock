@@ -3571,7 +3571,7 @@ dependencies = [
 [[package]]
 name = "nomad-chemical-energy"
 version = "1.0.0"
-source = { git = "https://github.com/nomad-hzb/nomad-chemical-energy.git#8dd14a179d38dc48e747e10d9efc419f646187c2" }
+source = { git = "https://github.com/nomad-hzb/nomad-chemical-energy.git#1573c044454645138d84247b965b05a9151938c3" }
 dependencies = [
     { name = "httpx" },
     { name = "nomad-baseclasses" },
