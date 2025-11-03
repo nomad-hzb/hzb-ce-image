@@ -1,6 +1,7 @@
 services:
   api_host: "localhost"
   api_base_path: "/nomad-oasis"
+  mode: "development"
 
 oasis:
   is_oasis: true
