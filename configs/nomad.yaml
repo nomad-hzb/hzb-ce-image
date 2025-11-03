@@ -12,7 +12,7 @@ north:
   tools:
     options:
       jupyter:
-        image: ghcr.io/fairmat-nfdi/nomad-distro-template/jupyter:main
+        image: ghcr.io/nomad-hzb/hzb-ce-image/jupyter:main
 
 meta:
   deployment: "oasis"
