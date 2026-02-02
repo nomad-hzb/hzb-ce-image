@@ -3561,7 +3561,7 @@ wheels = [
 [[package]]
 name = "nomad-baseclasses"
 version = "1.0.0"
-source = { git = "https://github.com/nomad-hzb/nomad-baseclasses.git#c5bc988be13a3b1dad84bb27371b9697efa2bd1c" }
+source = { git = "https://github.com/nomad-hzb/nomad-baseclasses.git#22250f954edef04f7836114d6cb7e5d8ae2dea40" }
 dependencies = [
     { name = "chardet" },
     { name = "hdf5plugin" },
@@ -3581,7 +3581,7 @@ dependencies = [
 [[package]]
 name = "nomad-chemical-energy"
 version = "1.0.0"
-source = { git = "https://github.com/nomad-hzb/nomad-chemical-energy.git#d9504d4cf461bf115abf48265fb9b89eb7e0643d" }
+source = { git = "https://github.com/nomad-hzb/nomad-chemical-energy.git#3ff6e523ff0d73817356175b64bb0446d288d1be" }
 dependencies = [
     { name = "httpx" },
     { name = "nomad-baseclasses" },
