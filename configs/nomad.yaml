@@ -1,22 +1,28 @@
 services:
-  api_host: "localhost"
+  api_host: ${NOMAD_SERVICES_API_HOST:-localhost}
   api_base_path: "/nomad-oasis"
+  upload_limit: 10000
+  https: true
+  admin_user_id: ${NOMAD_SERVICES_ADMIN_USER_ID}
+  upload_members_group_search_enabled: true
+  api_secret: ${NOMAD_SERVICES_API_SECRET}
+
+fs:
+  north_home_external: ${NOMAD_FS_NORTH_HOME_EXTERNAL}
+  public_external: ${NOMAD_FS_PUBLIC_EXTERNAL}
+  staging_external: ${NOMAD_FS_STAGING_EXTERNAL}
 
 oasis:
   is_oasis: true
   uses_central_user_management: true
 
-plugins:
-  entry_points:
-    options:
-      nomad_north_jupyter.north_tools:jupyter:
-        north_tool:
-          image: ghcr.io/nomad-hzb/hzb-ce-image/jupyter:main
-
 meta:
-  deployment: "oasis"
-  deployment_url: "https://my-oasis.org/api"
-  maintainer_email: "me@my-oasis.org"
+  deployment: ${NOMAD_META_DEPLOYMENT}
+  deployment_url: ${NOMAD_META_DEPLOYMENT_URL}
+  maintainer_email: ${NOMAD_META_MAINTAINER_EMAIL}
+
+#client:
+#  url: ${NOMAD_META_DEPLOYMENT_URL}
 
 logstash:
   enabled: false
@@ -35,3 +41,81 @@ elastic:
 north:
   enabled: true
   enable_new_hub_api: true
+
+ui:
+  theme:
+    title: "NOMAD CE HZB"
+  unit_systems:
+    selected: "SI"
+
+plugins:
+# We only include our schema here. Without the explicit include, all plugins will be
+# loaded. Many build in plugins require more dependencies. Install nomad-lab[parsing]
+# to make all default plugins work.
+  entry_points:
+    options:
+      nomad_north_jupyter.north_tools:jupyter:
+        north_tool:
+          # image: ghcr.io/nomad-hzb/hzb-ce-image/jupyter:main
+          image: ghcr.io/fairmat-nfdi/nomad-north:main  # is this needed or is this already an entry point via the pyproject.toml ?
+      nomad_north_voila.north_tools:voila:
+        north_tool:
+          image: ghcr.io/fairmat-nfdi/nomad-north-voila:main
+    include: [
+      "nomad_north_jupyter.north_tools:jupyter",
+      "nomad_north_voila.north_tools:voila",
+      "nomad_chemical_energy.schema_packages:ce_nome_package",
+      "nomad_chemical_energy.schema_packages:ce_acmd_package",
+      "nomad_chemical_energy.schema_packages:ce_necc_package",
+      "nomad_chemical_energy.schema_packages:ce_nsli_package",
+      "nomad_chemical_energy.schema_packages:ce_amcc_package",
+      "nomad_chemical_energy.schema_packages:ce_wannsee_package",
+      "nomad_chemical_energy.schema_packages:hzb_characterization_package",
+      "nomad_chemical_energy.schema_packages:hzb_catlab_package",
+      "nomad_chemical_energy.schema_packages:dlr_ec_package",
+      "nomad_chemical_energy.parsers:hzb_catlab_parser",
+      "nomad_chemical_energy.parsers:ce_nome_gamry_parser",
+      "nomad_chemical_energy.parsers:ce_nome_csv_parser",
+      "nomad_chemical_energy.parsers:ce_nome_uvvis_parser",
+      "nomad_chemical_energy.parsers:kmc2_xas_parser",
+      "nomad_chemical_energy.parsers:kmc3_xas_parser",
+      "nomad_chemical_energy.parsers:kmc3_xas_parser_before2021",
+      "nomad_chemical_energy.parsers:kmc3_biologic_parser",
+      "nomad_chemical_energy.parsers:ce_nome_tif_parser",
+      "nomad_chemical_energy.parsers:ce_nome_massspectrometry_parser",
+      "nomad_chemical_energy.parsers:ce_wannsee_mpt_parser",
+      "nomad_chemical_energy.parsers:ce_wannsee_cor_parser",
+      "nomad_chemical_energy.parsers:ce_wannsee_xrd_xy_parser",
+      "nomad_chemical_energy.parsers:ce_necc_xlsx_parser",
+      "nomad_chemical_energy.parsers:ce_necc_biologic_parser",
+      "nomad_chemical_energy.parsers:ce_amcc_biologic_parser",
+      "nomad_chemical_energy.apps:eln_app",
+      "nomad_chemical_energy.apps:documentation_tools_app",
+      "nomad_chemical_energy.apps:amcc_reproducibility_app",
+      "nomad_chemical_energy.apps:voila_finder_app",
+      "nomad_chemical_energy.apps:nome_sample_app",
+      "nomad_chemical_energy.apps:necc_find_app",
+      "nomad_chemical_energy.apps:necc_compare_app",
+      "nomad_chemical_energy.apps:nome_oer_cp_analysis_app",
+      "nomad_chemical_energy.apps:acmd_oer_app",
+      "nomad_chemical_energy.parsers:dlr_ec_cv_parser",
+      "nomad_chemical_energy.parsers:dlr_ec_cp_parser",
+      "nomad_chemical_energy.parsers:dlr_ec_eis_parser",
+      "nomad_chemical_energy.schema_packages:hzb_general_process_package",
+      "nomad_chemical_energy.parsers:tfc_sputtering_parser",
+      "nomad_chemical_energy.parsers:tfc_xrf_parser",
+      "nomad_chemical_energy.parsers:tfc_xrd_parser",
+      "nomad_chemical_energy.schema_packages:tfc_schema_package",
+      "nomad_chemical_energy.parsers:hzb_general_process_parser",
+      #"nomad_chemical_energy.apps:catlab_combinatorial_library_app",
+      "nomad_chemical_energy.parsers:ce_nesd_biologic_parser",
+      "nomad_chemical_energy.parsers:ce_nesd_labview_parser",
+      "nomad_chemical_energy.parsers:ce_nesd_zahner_parser",
+      "nomad_chemical_energy.parsers:ce_nesd_palmsens_parser",
+      "nomad_chemical_energy.parsers:ce_nesd_chi_bin_parser",
+      "nomad_chemical_energy.parsers:ce_nesd_chi_txt_parser",
+      "nomad_chemical_energy.parsers:ce_nesd_metadata_parser",
+      "nomad_chemical_energy.parsers:public_showcase_parser",
+      "nomad_chemical_energy.schema_packages:public_showcase_package",
+      "nomad_chemical_energy.parsers:ce_nome_general_parser", # needs to be at the end fall back
+    ]
