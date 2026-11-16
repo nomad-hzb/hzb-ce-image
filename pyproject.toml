@@ -30,12 +30,13 @@ repository = "https://github.com/FAIRmat-NFDI/nomad-distro-template"
 [project.optional-dependencies]
 # Add your plugins to the list below.
 plugins = [
-  "nomad-north-jupyter>=0.2.6",
-  "nomad-gui==2.0.1",
   'nomad-material-processing',
   'nomad-measurements',
   'nomad-baseclasses @ git+https://github.com/nomad-hzb/nomad-baseclasses.git',
   'nomad-chemical-energy @ git+https://github.com/nomad-hzb/nomad-chemical-energy.git',
+  'nomad-north-voila',
+  'nomad-north-jupyter>=0.2.6',
+  'nomad-gui==2.0.1',
 ]
 jupyter = [
 'voila',
@@ -53,7 +54,6 @@ jupyter = [
 'xraylarch',
 'seaborn', # 'jupyterhub<5','oauthenticator<16'
 ]
-dev = ["nomad-lab[parsing, infrastructure, dev]==1.4.2"]
 
 dev = ["nomad-lab[infrastructure, dev]==2.0.1"]
 
