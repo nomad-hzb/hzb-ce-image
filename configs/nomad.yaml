@@ -84,6 +84,8 @@ plugins:
     "nomad_chemical_energy.parsers:public_showcase_parser",
     "nomad_chemical_energy.schema_packages:public_showcase_package",
     "nomad_chemical_energy.parsers:ce_nome_general_parser", # needs to be at the end fall back
+    "nomad_north_jupyter.north_tools:jupyter",
+    "nomad_north_voila.north_tools:voila",
     ]
 
 meta:

@@ -322,8 +322,8 @@ services:
       # - ./configs/nginx_http.conf:/etc/nginx/conf.d/default.conf:ro
       # HTTPS (you need to have a TLS certificate)
       - ./configs/nginx_https.conf:/etc/nginx/conf.d/default.conf:ro
-      - ${NOMAD_PROXY_CERTS_VOLUME}/nginx-selfsigned.crt:/etc/nginx/tls/mounted-nomad-oasis.crt:ro  # Path to your TLS certificate
-      - ${NOMAD_PROXY_CERTS_VOLUME}/nginx-selfsigned.key:/etc/nginx/tls/mounted-nomad-oasis.key:ro  # Path to your TLS private key
+      - ${NOMAD_PROXY_CERTS_VOLUME}/selfsigned.crt:/etc/nginx/tls/mounted-nomad-oasis.crt:ro  # Path to your TLS certificate
+      - ${NOMAD_PROXY_CERTS_VOLUME}/selfsigned.key:/etc/nginx/tls/mounted-nomad-oasis.key:ro  # Path to your TLS private key
     depends_on:
       app:
         condition: service_healthy
